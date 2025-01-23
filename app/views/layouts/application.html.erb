@@ -13,27 +13,27 @@
   <header>
     <nav>
       <div class="container">
-      <ul>
-        <li>
+        <div class="navbar-brand">
           <%= link_to 'Bookers', root_path %>
-        </li>
-        <li>
-          <%= link_to 'Home', root_path %>
-        </li>
-      <% if user_signed_in? %>
-        <li>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-        <li>
-        <% else %>
-        <li>
-          <%= link_to 'about', homes_about %>
-        </li>
-        <li>
-          <%= link_to "Sign up", new_user_registration_path %>
-        </li>
-        <li>
-          <%= link_to "Log in", new_user_session_path %>
-        </li>
+        </dev>
+        <ul>
+          <li>
+            <%= link_to 'Home', root_path %>
+          </li>
+          <% if user_signed_in? %>
+          <li>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+          <li>
+          <% else %>
+          <li>
+            <%= link_to 'about', about_path %>
+          </li>
+          <li>
+            <%= link_to "Sign up", new_user_registration_path %>
+          </li>
+          <li>
+            <%= link_to "Log in", new_user_session_path %>
+          </li>
         <% end %>
         </ul>
         </div>

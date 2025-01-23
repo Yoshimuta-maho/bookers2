@@ -4,5 +4,10 @@
 </p>
 <p>about various books!</p>
 
-<p><%= link_to "Log in", new_user_session_path %></p>
-<p><%= link_to "Sign in", new_user_registration_path %></p>
+<% if user_signed_in? %>
+  <p><%= link_to "Log in", user_path(current_user) %></p>
+  <p><%= link_to "Sign in", user_path(current_user) %></p>
+<% else %>
+  <p><%= link_to "Log in", new_user_session_path %></p>
+  <p><%= link_to "Sign in", new_user_registration_path %></p>
+<% end %>

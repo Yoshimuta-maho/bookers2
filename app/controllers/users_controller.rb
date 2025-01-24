@@ -19,11 +19,25 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-  
+  def edit
+    user = User.find(params[:id])
+    unless user.id == current_user.
+      redirect_to #リンク先の確認してから入力
+    end
+    @user = User.find(params[:id])
+  end
+
   def destroy
     user = User.find(params[:id])
-    user.destroy
-    redirect_to 'homes/top'
+    if user.destroy
+      flash[:notice] = "ログアウトしました"
+      redirect_to 'homes/top'
+    else 
+      @user = User.allocate
+      flash.now[:notice] = "ログアウトに失敗しました"
+      render :users_path
+    end
+    
   end
 
   

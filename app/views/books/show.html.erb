@@ -1,0 +1,18 @@
+<div>
+<span class="color-green">
+  <%= flash[:notice] %>
+  </span>
+</div>
+<%= yield %>
+
+<p><strong>Title:</strong><%= @book.title %></p>
+
+<p><strong>Body:</strong><%= @book.body %></p>
+
+<span class="edit">
+<%= link_to "edit", edit_book_path(@book.id) %>
+</span>
+
+<span class="back">
+<%= link_to "back", "/books" %>
+</span>

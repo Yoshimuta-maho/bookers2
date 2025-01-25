@@ -1,8 +1,17 @@
+<div>
+  <%= flash[:notice] %>
+</div>
+
+<h1>Welcome to <strong>📖bookers !!</strong></h1>
 <p>In 📖<strong>Bokkers,</strong></p>
 <p>
   you can share and exchenge your opinions,inpressions,and emotions
 </p>
 <p>about various books!</p>
+
+<div>
+  <%= flash[:notice] %>
+</div>
 
 <% if user_signed_in? %>
   <p><%= link_to "Log in", user_path(current_user) %></p>

@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
 
   def index
+    @user = current_user
     @users = User.all
+    @book = Book.new
   end
 
   def show
@@ -23,8 +25,8 @@ class UsersController < ApplicationController
   end
   def edit
     user = User.find(params[:id])
-    unless user.id == current_user.
-      redirect_to #リンク先の確認してから入力
+    unless user.id == current_user.id
+      redirect_to user_path(current_user.id)
     end
     @user = User.find(params[:id])
   end
@@ -43,8 +45,14 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    user.update(user_params)
-    redirect_to users_path(user.id)
+    if user.update(users_params)
+      flash[:notice] = "You have updated user successfully."
+      redirect_to users_path(user.id)
+    else 
+      @user = User.allocate
+      flash.now[:notice] = "失敗しました"
+      render :edit
+    end
   end
 
 

@@ -24,8 +24,8 @@ class UsersController < ApplicationController
     end
   end
   def edit
-    user = User.find(params[:id])
-    unless user.id == current_user.id
+    @user = User.find(params[:id])
+    unless @user.id == current_user.id
       redirect_to user_path(current_user.id)
     end
     @user = User.find(params[:id])
@@ -37,20 +37,18 @@ class UsersController < ApplicationController
       flash[:notice] = "Signed out successfully."
       redirect_to 'homes/top'
     else 
-      @user = User.allocate
       flash.now[:notice] = "ログアウトに失敗しました"
       render :users_path
     end
   end
 
   def update
-    user = User.find(params[:id])
-    if user.update(users_params)
+    @user = User.find(params[:id])
+    if @user.update(users_params)
       flash[:notice] = "You have updated user successfully."
-      redirect_to users_path(user.id)
+      redirect_to users_path(@user.id)
     else 
-      @user = User.allocate
-      flash.now[:notice] = "失敗しました"
+      flash[:alert] = "Failed to update user."
       render :edit
     end
   end

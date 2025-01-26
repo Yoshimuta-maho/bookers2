@@ -1,31 +1,31 @@
-<h1>Editing Book</h1>
-<% if @book.errors.any? %>
-  <%= @book.errors.count %>errors prohibited this book from being saved:
-  <ul>
-    <% @book.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
-<%= form_with model: @book, url: update_book_path(@book.id),method: :patch do |f| %>
+  <h1>Editing Book</h1>
   
-  <p>title</p>
-  <%= f.text_field :title %>
+  <% if @book.errors.any? %>
+    <h3><%= @book.errors.count %>errors prohibited this book from being saved:</h3>
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <%= form_with model: @book, method: :patch do |f| %>
+    
+    <p>title</p>
+    <%= f.text_field :title %>
 
-  <p>body</p>
-  <%= f.text_area :body %>
+    <p>body</p>
+    <%= f.text_area :body %>
 
-  <p class="input"><%= f.submit 'Update Book' %></p>
+    <p class="input"><%= f.submit 'Update Book' %></p>
 
 
 
-<% end %>
+  <% end %>
 
-<span class="show">
-<%= link_to "show", book_path(@book) %>
-</span>
-
-<span class="back">
-<%= link_to "back", "/books" %>
-</span>
-
+  <span class="show">
+  <%= link_to "show", book_path(@book) %>
+  </span>
+|
+  <span class="back">
+  <%= link_to "back", "/books" %>
+  </span>

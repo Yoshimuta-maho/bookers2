@@ -1,11 +1,9 @@
-<div class="row">
-  <div class="col-md-3">
     <div>
       <%= flash[:notice] %>
     </div>
     <h2>User info</h2>
     <%= image_tag user.get_profile_image(100,100) %>
-    <table>
+    <table class="table">
       <tbody>
         <tr></tr>
         <tr>
@@ -18,11 +16,7 @@
         </tr>
       </tbody>
     </table>
-
-    <div class="btn btn-outline-secondary btn-block">
-      <%= link_to edit_user_path(user.id) do %>
+    <div class="row">
+      <%= link_to edit_user_path(user.id), class:"btn btn-outline-secondary btn-block" do %>
       <i class="fa-solid fa-user-gear"></i>
       <% end %>
-    </div>
-  </div>
-</div>
